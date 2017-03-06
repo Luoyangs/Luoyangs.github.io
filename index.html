@@ -1,1 +1,133 @@
-##h1 this is my index.html
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bootstrap 实例 - 默认的导航栏</title>
+	<link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="static/js/underscore-min.js"></script>
+	<style>
+		.navbar{border-radius: 0px;margin-bottom:0px;}
+		section{background:#EBEBEB;margin-top:0px;}
+		#articleList{padding-top:10px;overflow:hidden;}
+		.article-item{width:855px;min-height:430px;background:#fff;margin-top:16px;padding:36px;}
+		.article-item img{width:660px;height:346px;object-fit:cover;}
+		.mname a{font-size:26px;line-height:36px;color:#F4645F;margin-top:8px;display:block;}
+		.cont{font-size:16px;line-height:30px;color:#222;width:660px;}
+		.cont a{font-size:14px;color:#F4645F;}
+		.atime{color:#888;font-size:16px;}
+		.tip-box{width:360px;background:#fff;margin-top:26px;padding:16px;}
+		.tip-box .tip-title{height:40px;line-height:40px;font-size:20px;border-bottom: 1px solid #F4645F;display:inline-block;padding-right:36px;}
+		.tip-box>a{display:block;background:#F4645F;height:40px;line-height:40px;color:#fff;text-align:center;margin-top:24px;}
+		.tip-box>a:hover{text-decoration:none;background:#222;}
+		.tip-ul{padding:0px;padding-top:16px;}
+		.tip-ul li{list-style:none;}
+		.tip-ul li a{font-size:16px;line-height:35px;color:#555;display:block;}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">博客在线</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+	        <li><a href="#">作品集</a></li>
+	        <li><a href="#">学习笔记</a></li>
+	        <li><a href="#">收藏</a></li>
+	        <li><a href="#">实习经验</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#">收藏</a></li>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Luoyangs <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#"><i class="glyphicon glyphicon-phone-alt"></i>&nbsp;&nbsp;手机</a></li>
+	            <li><a href="#"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;Email</a></li>
+	            <li><a href="#"><i class="glyphicon glyphicon-link"></i>&nbsp;&nbsp;QQ</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	<section>
+		<div class="container-fluid">
+			<div class="container">
+				<div class="col-sm-8">
+					<div id="articleList"></div>
+				</div>
+				<div class="col-sm-4">
+					<div class="tip-box">
+						<span class="tip-title">下载</span>
+						<a href="static/resume/实习简历-罗阳坤.pdf" target="_black">实习简历</a>
+					</div>
+					<div class="tip-box">
+						<span class="tip-title">联系方式</span>
+						<ul class="tip-ul">
+							<li><a href="#"><i class="glyphicon glyphicon-phone-alt"></i>&nbsp;手机&nbsp;&nbsp;:130-2634-9326</a></li>
+	            <li><a href="#"><i class="glyphicon glyphicon-envelope"></i>&nbsp;Email:1908147679@qq.com</a></li>
+	            <li><a href="#"><i class="glyphicon glyphicon-link"></i>&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp;:1908147679</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+<!--这是undercore模板引擎，属于前台模板引擎，而且已经被修改过-->
+<script type="text/template" id="products">
+  <div class="article-item">
+    <img src="{{= img}}" alt="...">
+    <div class="media-body">
+      <p class="mname"><a href="{{=link}}">{{= title }}</a></p>
+      <p class="cont">{{= content }} <a href="" class="mesmore">阅读更多</a> </p>
+      <p class="opt">
+        <span class="atime">完成时间&nbsp;{{= time }}</span>
+      </p>
+      <p></p>
+    </div>
+  </div>
+</script>
+<script>
+$(function(){
+	var data = [
+		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'},
+		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'},
+		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'},
+		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'},
+		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'},
+		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'},
+		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'}
+	];
+	var compiled = _.template($("#products").html());
+  //清空全部留言中的所有节点
+  $("#articleList").html("");
+  for(let item of data){
+    //数据绑定
+    var html = compiled({
+      content: item.content.length>140?item.content.substr(0,139):item.content,
+      author: item.author,
+      time: item.time,
+      link: item.link,
+      img: item.img,
+      title: item.title
+    });
+    //DOM操作，添加节点
+    $("#articleList").append($(html));
+  }
+});
+</script>
+</html>
