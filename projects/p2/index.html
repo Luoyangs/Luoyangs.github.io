@@ -50,7 +50,7 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+	        <li><a href="#">首页 <span class="sr-only">(current)</span></a></li>
 	        <li class="active"><a href="#">作品集</a></li>
 	        <li><a href="#">学习笔记</a></li>
 	        <li><a href="#">实习经验</a></li>
@@ -128,15 +128,15 @@
 <script>
 $(function(){
 	var item = {
-		title:'“WUST在线”校园信息平台',
-		content:'WUST在线校园信息平台属于个人单独开发的一个集PC端和WAP端且前后端分离的一套电商服务系统。里面集二手市场、单车租赁、资源分享、社区分享四大面向在校大学生的校园服务。\n\n其中，二手市场是高校跳蚤市场的一个缩影，里面可以发布自己的闲置物品，同时也可以检索别人放置的闲置物品，既可以物物交换，也可以低价淘宝\n；单车租赁是当下较火的一个校园业务，但有有些不同:很多学生都有自己的单车，但大部分时间是闲置的，如何将其最大效益发挥出来是一个需要大家讨论的话题。单车租赁正是解决这个问题的一种途径，车主可以将闲置的单车放置在系统上并标出闲置的时间，如有需要的人可以在这个时间段付以一定的押金和证明去租赁使用，只需完璧归赵即可；资源分享来源于百度网盘等各种资源库的思想，大学生思维活跃，本身就是一种资源，且大学生也正处在一个不断求知的阶段，如何获取和利用身边的资源辅助自己提升就是当下大学生需要自己思考的问题。资源分享的主题就是源于此处：我们鼓励每个人将自己的手边的一些资源放置在系统中，系统帮你分类管理，同时每个人都可以在系统中检索和求助自己需要的资源，从而达成一个良性的学习氛围；社区分享源于博主爱逛IT社区的癖好，本人喜欢关注业内的一些新鲜技术和讯息，而社区就是起到这样一个聚圈的作用，同时社区还有一个作用就是当做学习笔记的记录，不论是IT还是非IT，都要求活到老学到老，但是好记性不如烂笔头，勤记笔记可以帮你复习和巩固知识。这就是整个项目的一个简单介绍',
-		work:'这个项目是我在完成几个校外合作项目后再次独立设计和开发的一个项目。项目分为三个部分：服务器Api接口，PC前端&后台管理系统，微信小程序。目前已完成前两块，只剩小程序部分还未完成。其中服务器Api部分使用Webpack构建的Nodejs+Express框架，数据库采用Mongodb非关系型数据库；前端和后台管理系统采用Vue2.0全程构建，依赖于组件式开发和Vuex状态管理，各个页面之间的组件共享、数据通讯和共享完美实现，同时对于不常变更的数据采用Web Storage存取，进一步优化系统性能。页面布局参考Bootstrasp、ElementUI、AmazeUI等前端框架，并在此基础上使用CSS3进行动画渲染',
-		skil:'项目设计+架构；PC&WAP页面响应式布局；Bootstrasp、ElementUI、AmazeUI等前端框架；Node+Express服务器接口；Webpack/Gulp等前端构建工具；Vue2.0组件式开发；Vue2.0+Vuex状态管理；Web Storage本地缓存机制；Mongodb非关系型数据库；',
-		time:'2017.01-至今',
-		lanf:'Vue2.0/Vuex',
-		lanb:'Nodejs+Express',
-		imgs:['screenshorts/p1_1.png','screenshorts/p1_2.png','screenshorts/p1_2_1.png','screenshorts/p1_3.png','screenshorts/p1_4.png','screenshorts/p1_5.png','screenshorts/p1_5_1.png','screenshorts/p1_6.png','screenshorts/p1_8.png','screenshorts/p1_9.png','screenshorts/p1_10.png','screenshorts/p1_11.png','screenshorts/p1_12.png','screenshorts/p1_13.png','screenshorts/p1_14.png','screenshorts/p1_15.png','screenshorts/p1_16.png'],
-		info:'这是我学习和完成数个项目之后的一个总结，里面几乎使用了HTML5/CSS3最新的几个渲染，同时大胆的尝试了非关系型数据库，采用Nodejs开发，是我对自己的一个较大的挑战和学习过程'
+		title:'“创造城”在线交易系统',
+		content:'该系统主要面向“服务”、“便利店”和“商家”的一个合作平台，即从事服务者可以从平台获取“服务”相关的信息，便利店可以依托平台寻找合适的货源，同时商家也是可以依托平台促销自己的产品。主要服务方式为E购，E特价，E服务，E同城，E店五种模式。这就是整个项目的一个简单介绍',
+		work:'这个项目是我为企业第一次设计开发的在线电子交易系统。完全照着软件开发流程走完了需求分析、系统分析和模块分析几个步骤，并对每个步骤配置了相应的开发文档。此外，我也参与了项目的编码阶段，主要完成数据库的设计、系统框架建设、PC前端及后台管理系统近100个页面的样式布局、移动端数据Api接口开发、移动端Android应用。其中，数据库采用轻量级关系型数据库mysql进行开发，服务器端采用Java语言开发，使用当下企业很受欢迎的SpringMVC+myBatis框架，采用依赖注入的方式解耦和Ehcache的缓存机制减少服务器负担，并采用号称最好的数据库连接池——阿里druid；PC前端是基于Bootstrasp架构，采用Underscore等模板引擎渲染、Ajax异步更新数据；微信公众号内嵌响应式商城，基于AmazeUI和React框架，采用HTML5新特性Web Stroage本地缓存机制优化数据访问，避免Cookie的缺陷。由于协议等原因，我所展示的只是设计原型，后台管理页面和Android以及微信公众号部分不做展示',
+		skil:'项目设计+架构；PC&WAP页面响应式布局；Bootstrasp前端框架；Java后台；SpringMVC+myBatis框架；移动端React开发；Web Storage本地缓存机制；mysql关系型数据库；Ehcache缓存机制和阿里druid数据库连接池',
+		time:'2016.06-至今',
+		lanf:'Bootstrasp/React',
+		lanb:'Java SpringMVC+myBatis',
+		imgs:['screenshorts/p1_1.png','screenshorts/p1_2.png','screenshorts/p1_3.png','screenshorts/p1_4.png','screenshorts/p1_5.png','screenshorts/p1_6.png','screenshorts/p1_7.png','screenshorts/p1_8.png','screenshorts/p1_9.png','screenshorts/p1_10.png','screenshorts/p1_11.png','screenshorts/p1_12.png','screenshorts/p1_13.png','screenshorts/p1_14.png','screenshorts/p1_15.png','screenshorts/p1_16.png'],
+		info:'这个项目前后分了三个阶段，第一阶段就是总体设计和PC端实现，这一部分主要系统结构的确定和数据库的原型设计，此外就是对是页面布局的复习与运用，包括前端的模板引擎的使用；第二部分时移动端Android和IOS，主要为接口编写与测试和移动端开发；第三阶段正是现在还未完成的部分——微信公众号开发，为符合客户要求，采用响应式布局方案，在现有的移动框架——React基础上进行开发。尤其是再解决浏览器兼容、页面性能优化时碰到了很多问题，但最后都受益良多。但是在做消息推送的时候没有做好，是依托第三方JPush完成而不是HTML5时兴的Websocket，这点需要后面项目改进'
 	};
 	var compiled = _.template($("#product").html());
   //清空全部留言中的所有节点

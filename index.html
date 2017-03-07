@@ -12,12 +12,14 @@
 		section{background:#EBEBEB;margin-top:0px;}
 		#articleList{padding-top:10px;overflow:hidden;}
 		.article-item{width:855px;min-height:430px;background:#fff;margin-top:16px;padding:36px;}
-		.article-item img{width:660px;height:346px;object-fit:cover;}
-		.mname a{font-size:26px;line-height:36px;color:#F4645F;margin-top:8px;display:block;}
-		.cont{font-size:16px;line-height:30px;color:#222;width:660px;}
-		.cont a{font-size:14px;color:#F4645F;}
+		#articleList .article-item img{width:660px;height:346px;object-fit:cover;}
+		.mname a{text-align:center;font-size:26px;line-height:36px;color:#303030;margin-top:8px;display:block;width:660px;}
+		.mname a:hover{text-decoration:none;}
+		.cont{font-size:16px;line-height:30px;color:#222;width:660px;margin-top:16px;}
+		.cont a{font-size:15px;color:#F4645F;}
 		.atime{color:#888;font-size:16px;}
 		.tip-box{width:360px;background:#fff;margin-top:26px;padding:16px;}
+		.tip-box:first{margin-top:56px;}
 		.tip-box .tip-title{height:40px;line-height:40px;font-size:20px;border-bottom: 1px solid #F4645F;display:inline-block;padding-right:36px;}
 		.tip-box>a{display:block;background:#F4645F;height:40px;line-height:40px;color:#fff;text-align:center;margin-top:24px;}
 		.tip-box>a:hover{text-decoration:none;background:#222;}
@@ -27,7 +29,7 @@
 	</style>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
@@ -43,10 +45,8 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
-	        <li><a href="#">作品集</a></li>
+	        <li class="active"><a href="/">首页 <span class="sr-only">(current)</span></a></li>
 	        <li><a href="#">学习笔记</a></li>
-	        <li><a href="#">收藏</a></li>
 	        <li><a href="#">实习经验</a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
@@ -63,7 +63,7 @@
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-	<section>
+	<section style="margin-top:50px;">
 		<div class="container-fluid">
 			<div class="container">
 				<div class="col-sm-8">
@@ -77,9 +77,10 @@
 					<div class="tip-box">
 						<span class="tip-title">联系方式</span>
 						<ul class="tip-ul">
-							<li><a href="#"><i class="glyphicon glyphicon-phone-alt"></i>&nbsp;手机&nbsp;&nbsp;:130-2634-9326</a></li>
+							<li><a href="#"><i class="glyphicon glyphicon-earphone"></i>&nbsp;手机&nbsp;&nbsp;:130-2634-9326</a></li>
 	            <li><a href="#"><i class="glyphicon glyphicon-envelope"></i>&nbsp;Email:1908147679@qq.com</a></li>
 	            <li><a href="#"><i class="glyphicon glyphicon-link"></i>&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp;:1908147679</a></li>
+	            <li><a href="#"><i class="glyphicon glyphicon-globe"></i>&nbsp;GitHub:https://github.com/Luoyangs</a></li>
 						</ul>
 					</div>
 				</div>
@@ -90,9 +91,9 @@
 <!--这是undercore模板引擎，属于前台模板引擎，而且已经被修改过-->
 <script type="text/template" id="products">
   <div class="article-item">
+  	<p class="mname"><a href="{{=link}}">{{= title }}</a></p>
     <img src="{{= img}}" alt="...">
     <div class="media-body">
-      <p class="mname"><a href="{{=link}}">{{= title }}</a></p>
       <p class="cont">{{= content }} <a href="" class="mesmore">阅读更多</a> </p>
       <p class="opt">
         <span class="atime">完成时间&nbsp;{{= time }}</span>
@@ -104,13 +105,11 @@
 <script>
 $(function(){
 	var data = [
-		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'},
-		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'},
-		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'},
-		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'},
-		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'},
-		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'},
-		{title:'这是第一个作品',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p1/index.html',time:'2015.03-2015.05'}
+		{title:'“WUST在线”校园信息平台',content:'这个项目是我在完成几个校外合作项目后再次独立设计和开发的一个项目。项目分为三个部分：服务器Api接口，PC前端&后台管理系统，微信小程序。目前已完成前两块，只剩小程序部分还未完成。其中服务器Api部分使用Webpack构建的Nodejs+Express',img:'projects/p1/screenshorts/p1_1.png',link:'projects/p1/index.html',time:'2015.03-2015.05'},
+		{title:'“创造城”在线交易系统',content:'该系统主要面向“服务”、“便利店”和“商家”的一个合作平台，即从事服务者可以从平台获取“服务”相关的信息，便利店可以依托平台寻找合适的货源，同时商家也是可以依托平台促销自己的产品。主要服务方式为E购，E特价，E服',img:'projects/p2/screenshorts/p1_1.png',link:'projects/p2/index.html',time:'2015.03-2015.05'},
+		{title:'“医家MOA”移动办公系统',content:'这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介这是第一个作品的简介',img:'static/images/timg.jpg',link:'projects/p3/index.html',time:'2015.03-2015.05'},
+		{title:'某天然气电商销售平台',content:'这是我第一次加入这种服务外包类型的团队研发，虽然彼此了解不多，但是有熟悉核心业务的大神带着，虽然犯了不少错，受了不少批评，但是却获得了熟悉大业务的机会并且也学到了一些新知',img:'static/images/timg.jpg',link:'projects/p4/index.html',time:'2015.03-2015.05'},
+		{title:'鄂恒科技门户网站',content:'这是我初次在为面向IE浏览器的用户制作的网页，果不其然就遇到了浏览器兼容性、IE6.0+适配、PNG半透明图片的问题、IE盒子模型等问题，虽然只是简单地门户网站，但是要求在IE6+浏览器上正常显示，对当时的我来说的确颇为棘手，最终学会了一种条件注释的方式，最终比较满意的解决了浏览器兼容性的问题',img:'projects/p5/screenshorts/p1_1.png',link:'projects/p5/index.html',time:'2015.03-2015.05'}
 	];
 	var compiled = _.template($("#products").html());
   //清空全部留言中的所有节点
