@@ -2,9 +2,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Bootstrap 实例 - 默认的导航栏</title>
+	<title>博客 - @Luoyangs</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/x-icon" href="fav.png" />
+	<link rel="icon" type="image/x-icon" href="../../fav.png" />
 	<link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -14,7 +14,7 @@
 		section{background:#EBEBEB;margin-top:0px;}
 		#articleItem{padding-top:10px;overflow:hidden;}
 		.article-item{width:855px;min-height:430px;background:#fff;margin-top:16px;padding:36px;}
-		.article-item img{width:660px;height:346px;object-fit:cover;}
+		.article-item img{width:660px;}
 		.mname{text-align:center;width:660px;}
 		.cont{font-size:16px;line-height:30px;color:#222;width:660px;margin-top:16px;}
 		.cont .cont-t{font-size:16px;color:#F4645F;display:block;height:40px;line-height:40px;border-bottom:1px solid #c8c8c8;}
@@ -124,13 +124,13 @@
 $(function(){
 	var item = {
 		title:'“WUST在线”校园信息平台',
-		content:'从设计到Coding，完全独立完成整个项目。该项目前后端完全分离，使用Nodejs+Express作为服务器；Mongoose非关系型数据库存储；Vue2.0+Vuex完成所有的WEB页面；Webpack等模块化管理。预计还要接入微信小程序部分。',
-		skil:'项目架构；PC&WAP页面；Node后台接口；Webpack等前端构建工具；前端框架和组件式开发',
-		time:'2017.01-至今',
-		lanf:'Vue2.0/Vuex',
-		lanb:'Nodejs+Express',
-		imgs:['screenshorts/p1-1.png','screenshorts/p1-1.png','screenshorts/p1-1.png','screenshorts/p1-1.png','screenshorts/p1-1.png','screenshorts/p1-1.png','screenshorts/p1-1.png','screenshorts/p1-1.png'],
-		info:''
+		content:'目前,医院在运用信息化管理中,其中有一个非常重要的内容,那就是OA移动办公系统的应用,它是一种比较新颖的办公模式。特别是相对传统的办公模式而言,这一新型的OA移动办公系统大大地节省了人力、物力等等各种资源的成本付出,工作的效率也得到了很大的提高,加快了医院走向信息化管理的步伐,从而促使医院在医疗服务方面逐步走向数字化、信息化和网络化。本系统采用HTML5 websocket和JPush完成实时通讯和消息通知，从而形成移动化办公系统，到达提升办公效率的目的',
+		skil:'Vue框架；团队开发；组件开发；Webpack等前端构建工具；前端框架和组件式开发；Websocket消息推送；工作流OA',
+		time:'2016.07-至今',
+		lanf:'Vuejs',
+		lanb:'',
+		imgs:['screenshorts/p1_1.png','screenshorts/p1_2.png','screenshorts/p1_3.png','screenshorts/p1_4.png','screenshorts/p1_5.png','screenshorts/p1_6.png','screenshorts/p1_7.png','screenshorts/p1_8.png'],
+		info:'这个项目是我们实验室一起开发完成，而我和其他几个人一起完成前端页面，主要工作模块就是消息通知、工作流和会议这三部分。这是我第一次接触Vuejs这个前端框架，感觉组件开发的确很强大很便利；在使用websocket完成消息通知时虽然碰了一些困难，但是大家一起找Bug的感觉让我备受鼓舞，最终大家一起完成了基于websocket的消息通知模块，然后还接触了现实中的工作流，虽然繁琐，但是随着一步一步实现出来后深深体会到这个移动办公系统的方便'
 	};
 	var compiled = _.template($("#product").html());
   //清空全部留言中的所有节点
