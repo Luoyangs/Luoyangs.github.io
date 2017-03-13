@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>博客 - @Luoyangs</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="../../fav.png" />
+	<link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="../../static/js/underscore-min.js"></script>
+	<style>
+		.navbar{border-radius: 0px;margin-bottom:0px;}
+		section{background:#EBEBEB;margin-top:0px;font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;}
+		#articleList{background:#fff;padding:16px;margin-top:20px;}
+		.title{font-size:26px;text-align:center;font-weight:700;}
+		.sub-title{font-size:16px;text-align:center;margin-left:32px;}
+		#articleList span{display:block;margin-bottom:8px;line-height:20px;}
+		#scrollspy > .nav {padding-left: 0px;background:#fff;margin-top:20px;padding:16px;min-width:250px;}
+	  /* all anchors */
+	  #scrollspy .nav > li > a {padding: 3px;border-left: 0px rgba(0,0,0,0);}
+	  /* first level */
+	  #scrollspy .nav li >  a {padding-left: 10px;}
+	  /* second */
+	  #scrollspy .nav .nav li >  a {padding-left: 20px;font-size:.9em;}
+	  /* third */
+	  #scrollspy .nav .nav .nav li >  a {padding-left: 30px;font-size:.8em;}
+	  /* fourth */
+	  #scrollspy .nav .nav .nav .nav li >  a {padding-left: 40px;}
+	  /* fifth */
+	  #scrollspy .nav .nav .nav .nav .nav li >  a {padding-left: 50px;}
+	  /* active link */
+	  #scrollspy li.active > a {font-weight:bold;border-left: 2px solid gray;}
+	  /* hide second level lists */
+	  #scrollspy .nav .nav {display:none;}
+	  /* show second-level when active */
+	  #scrollspy .nav > .active > .nav {display: block;}
+	  /* headings on the page (easier to see h5, h6) */
+	  #scrollspy h2, #scrollspy h3, #scrollspy h4, #scrollspy h5, #scrollspy h6 {font-style: italic;}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">博客在线</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+	        <li><a href="#">作品集</a></li>
+	        <li class="active"><a href="#">学习笔记</a></li>
+	        <li><a href="#">实习经验</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#">收藏</a></li>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Luoyangs <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#"><i class="glyphicon glyphicon-phone-alt"></i>&nbsp;&nbsp;手机</a></li>
+	            <li><a href="#"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;Email</a></li>
+	            <li><a href="#"><i class="glyphicon glyphicon-link"></i>&nbsp;&nbsp;QQ</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	<section style="margin-top:50px;">
+		<div class="container-fluid">
+			<div class="container">
+				<div class="col-sm-9">
+					<div id="articleList">
+						<p class="title">JS 特性复习</p>
+						<p class="sub-title">参考JS&JQuery源码学习笔记</p>
+						<h2>1 基础知识</h2>
+		        <h3>1.1 基本用法</h3>
+		        <p>
+							ES6新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。
+						</p>
+					</div>
+				</div>
+				<div class="col-sm-3" id="scrollspy"></div>
+			</div>
+		</div>
+	</section>
+</body>
+<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+<script src="../../static/js/dynamicscrollspy.js"></script>
+<script>
+  $(function() {
+    $('#scrollspy').DynamicScrollspy({
+      genIDs: true,
+      testing: true
+    });
+  });
+</script>
+</html>

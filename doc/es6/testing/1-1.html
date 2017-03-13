@@ -1,0 +1,19 @@
+<script>
+var b = [];
+for(var j = 0;j < 10; j++) {
+	b[j] = (function(num){
+		return function(){
+			console.log(num);
+		}
+	})(j)
+}
+b[6]();
+
+var a = [];
+for (let i = 0; i < 10; i++) {
+  a[i] = function () {
+    console.log(i);
+  };
+}
+a[6](); // 6
+</script>
