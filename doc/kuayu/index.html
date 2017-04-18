@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>博客 - @Luoyangs</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="../../fav.png" />
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="../../static/js/underscore-min.js"></script>
+	<style>
+		.navbar{border-radius: 0px;margin-bottom:0px;}
+		section{background:#EBEBEB;margin-top:0px;font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;}
+		#articleList{background:#fff;padding:16px;margin-top:20px;}
+		.title{font-size:26px;text-align:center;font-weight:700;}
+		.sub-title{font-size:16px;text-align:center;margin-left:32px;}
+		#articleList span{display:block;margin-bottom:8px;line-height:20px;}
+		.danger{color:#ff3366;}
+		.success{color:#4FC08D;}
+		#scrollspy > .nav {padding-left: 0px;background:#fff;margin-top:20px;padding:16px;min-width:250px;}
+	  /* all anchors */
+	  #scrollspy .nav > li > a {padding: 3px;border-left: 0px rgba(0,0,0,0);}
+	  /* first level */
+	  #scrollspy .nav li >  a {padding-left: 10px;}
+	  /* second */
+	  #scrollspy .nav .nav li >  a {padding-left: 20px;font-size:.9em;}
+	  /* third */
+	  #scrollspy .nav .nav .nav li >  a {padding-left: 30px;font-size:.8em;}
+	  /* fourth */
+	  #scrollspy .nav .nav .nav .nav li >  a {padding-left: 40px;}
+	  /* fifth */
+	  #scrollspy .nav .nav .nav .nav .nav li >  a {padding-left: 50px;}
+	  /* active link */
+	  #scrollspy li.active > a {font-weight:bold;border-left: 2px solid gray;}
+	  /* hide second level lists */
+	  #scrollspy .nav .nav {display:none;}
+	  /* show second-level when active */
+	  #scrollspy .nav > .active > .nav {display: block;}
+	  /* headings on the page (easier to see h5, h6) */
+	  #scrollspy h2, #scrollspy h3, #scrollspy h4, #scrollspy h5, #scrollspy h6 {font-style: italic;}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">博客在线</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+	        <li class="active"><a href="#">学习笔记</a></li>
+	        <li><a href="#">实习经验</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#">收藏</a></li>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Luoyangs <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#"><i class="glyphicon glyphicon-phone-alt"></i>&nbsp;&nbsp;手机</a></li>
+	            <li><a href="#"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;Email</a></li>
+	            <li><a href="#"><i class="glyphicon glyphicon-link"></i>&nbsp;&nbsp;QQ</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	<section style="margin-top:50px;">
+		<div class="container-fluid">
+			<div class="container">
+				<div class="col-sm-9">
+					<div id="articleList">
+						<p class="title">前端解决跨域问题</p>
+						<p class="sub-title">参考web技术文档</p>
+						<h2>1 问题描述</h2>
+						<h3>1.1 同源策略</h3>
+						<p>
+<img src="res/k1.png" alt="">
+<span>特别注意两点：</span>
+<span>第一，如果是协议和端口造成的跨域问题“前台”是无能为力的，</span>
+<span>第二：在跨域问题上，域仅仅是通过“URL的首部”来识别而不会去尝试判断相同的ip地址对应着两个域或两个域是否在同一个ip上。</span>
+<span>“URL的首部”指window.location.protocol +window.location.host，也可以理解为“Domains, protocols and ports must match”。</span>
+
+
+		        </p>
+		        <h2>2 前端解决跨域问题</h2>
+		        <h3>2.1 document.domain + iframe</h3>
+		        <p>
+<span class="danger">只有在主域相同的时候才能使用</span>
+<span>1) 在www.a.com/a.html中：</span>
+<pre>
+document.domain = 'a.com';
+var ifr = document.createElement('iframe');
+ifr.src = 'http://www.script.a.com/b.html';
+ifr.display = none;
+document.body.appendChild(ifr);
+ifr.onload = function(){
+    var doc = ifr.contentDocument || ifr.contentWindow.document;
+    //在这里操作doc，也就是b.html
+    ifr.onload = null;
+};
+</pre>
+<span>2) 在www.script.a.com/b.html中：</span>
+<pre>
+document.domain = 'a.com';
+</pre>
+						</p>
+						<h3>2.1 动态创建script</h3>
+						<p>
+<span class="danger">因为script标签不受同源策略的限制。</span>
+<pre>
+function loadScript(url, func) {
+  var head = document.head || document.getElementByTagName('head')[0];
+  var script = document.createElement('script');
+  script.src = url;
+
+  script.onload = script.onreadystatechange = function(){
+    if(!this.readyState || this.readyState=='loaded' || this.readyState=='complete'){
+      func();
+      script.onload = script.onreadystatechange = null;
+    }
+  };
+
+  head.insertBefore(script, 0);
+}
+window.baidu = {
+  sug: function(data){
+    console.log(data);
+  }
+}
+loadScript('http://suggestion.baidu.com/su?wd=w',function(){console.log('loaded')});
+//我们请求的内容在哪里？
+//我们可以在chorme调试面板的source中看到script引入的内容
+</pre>
+						</p>
+						<h3>2.3 location.hash + iframe</h3>
+						<p>
+<span class="danger">原理是利用location.hash来进行传值。</span>
+<span>假设域名a.com下的文件cs1.html要和cnblogs.com域名下的cs2.html传递信息。</span>
+<span>1) cs1.html首先创建自动创建一个隐藏的iframe，iframe的src指向cnblogs.com域名下的cs2.html页面</span>
+<span>2) cs2.html响应请求后再将通过修改cs1.html的hash值来传递数据</span>
+<span>3) 同时在cs1.html上加一个定时器，隔一段时间来判断location.hash的值有没有变化，一旦有变化则获取获取hash值</span>
+<span class="danger">注：由于两个页面不在同一个域下IE、Chrome不允许修改
+<span>先是a.com下的文件cs1.html文件：</span>
+<pre>
+function startRequest(){
+  var ifr = document.createElement('iframe');
+  ifr.style.display = 'none';
+  ifr.src = 'http://www.cnblogs.com/lab/cscript/cs2.html#paramdo';
+  document.body.appendChild(ifr);
+}
+
+function checkHash() {
+  try {
+    var data = location.hash ? location.hash.substring(1) : '';
+    if (console.log) {
+      console.log('Now the data is '+data);
+    }
+  } catch(e) {};
+}
+setInterval(checkHash, 2000);
+</pre>
+<span>cnblogs.com域名下的cs2.html:</span>
+<pre>
+/模拟一个简单的参数处理操作
+switch(location.hash){
+  case '#paramdo':
+    callBack();
+    break;
+  case '#paramset':
+    //do something……
+    break;
+}
+
+function callBack(){
+  try {
+    parent.location.hash = 'somedata';
+  } catch (e) {
+    // ie、chrome的安全机制无法修改parent.location.hash，
+    // 所以要利用一个中间的cnblogs域下的代理iframe
+    var ifrproxy = document.createElement('iframe');
+    ifrproxy.style.display = 'none';
+    ifrproxy.src = 'http://a.com/test/cscript/cs3.html#somedata';    // 注意该文件在"a.com"域下
+    document.body.appendChild(ifrproxy);
+  }
+}
+</pre>
+<span>a.com下的域名cs3.html</span>
+<pre>
+//因为parent.parent和自身属于同一个域，所以可以改变其location.hash的值
+parent.parent.location.hash = self.location.hash.substring(1);
+</pre>
+						</p>
+						<h3>2.4 window.name + iframe</h3>
+						<p>
+<span class="danger">window.name 的美妙之处：name 值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的 name 值（2MB）。</span>
+<span>1) 创建a.com/cs1.html</span>
+<span>2) 创建a.com/proxy.html，并加入如下代码</span>
+<pre>
+function proxy(url, func){
+  var isFirst = true,
+  ifr = document.createElement('iframe'),
+  loadFunc = function(){
+    if(isFirst){
+      ifr.contentWindow.location = 'http://a.com/cs1.html';
+      isFirst = false;
+    }else{
+      func(ifr.contentWindow.name);
+      ifr.contentWindow.close();
+      document.body.removeChild(ifr);
+      ifr.src = '';
+      ifr = null;
+    }
+  };
+
+  ifr.src = url;
+  ifr.style.display = 'none';
+  if(ifr.attachEvent) ifr.attachEvent('onload', loadFunc);
+  else ifr.onload = loadFunc;
+
+  document.body.appendChild(iframe);
+}
+
+proxy('http://www.baidu.com/', function(data){
+  console.log(data);
+});
+</pre>
+<span>3 在b.com/cs1.html中包含：</span>
+<pre>
+window.name = '要传送的内容';
+</pre>
+
+						</p>
+						<h3>2.5 HTML5中的postMessage</h3>
+						<p>
+<span>1) a.com/index.html中的代码：</span>
+<pre>
+&lt;iframe id="ifr" src="b.com/index.html"&gt;&lt;/iframe&gt;
+&lt;script type="text/javascript"&gt;
+window.onload = function() {
+    var ifr = document.getElementById('ifr');
+    var targetOrigin = 'http://b.com';  // 若写成'http://b.com/c/proxy.html'效果一样
+                                        // 若写成'http://c.com'就不会执行postMessage了
+    ifr.contentWindow.postMessage('I was there!', targetOrigin);
+};
+&lt;/script&gt;
+</pre>
+<span>2) b.com/index.html中的代码：</span>
+<pre>
+window.addEventListener('message', function(event){
+  // 通过origin属性判断消息来源地址
+  if (event.origin == 'http://a.com') {
+    alert(event.data);    // 弹出"I was there!"
+    alert(event.source);  // 对a.com、index.html中window对象的引用
+                            // 但由于同源策略，这里event.source不可以访问window对象
+  }
+}, false);
+</pre>
+
+						</p>
+						<h3>2.6 JSONP</h3>
+						<p>
+<span>JSONP包含两部分：回调函数和数据。</span>
+<span>回调函数是当响应到来时要放在当前页面被调用的函数。</span>
+<span>数据就是传入回调函数中的json数据，也就是回调函数的参数了。</span>
+<pre>
+function handleResponse(response){
+  console.log('The responsed data is: '+response.data);
+}
+var script = document.createElement('script');
+script.src = 'http://www.baidu.com/json/?callback=handleResponse';
+document.body.insertBefore(script, document.body.firstChild);
+//原理如下：
+//当我们通过script标签请求时
+//后台就会根据相应的参数(json,handleResponse)
+//来生成相应的json数据(handleResponse({"data": "zhe"}))
+//最后这个返回的json数据(代码)就会被放在当前js文件中被执行
+//至此跨域通信完成
+</pre>
+<span class="danger"> jsonp虽然很简单，但是有如下缺点：</span>
+<span>1）安全问题(请求代码中可能存在安全隐患)</span>
+<span>2）要确定jsonp请求是否失败并不容易</span>
+						</p>
+					</div>
+				</div>
+				<div class="col-sm-3" id="scrollspy"></div>
+			</div>
+		</div>
+	</section>
+</body>
+<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+<script src="../../static/js/dynamicscrollspy.js"></script>
+<script>
+  $(function() {
+    $('#scrollspy').DynamicScrollspy({
+      genIDs: true,
+      testing: true
+    });
+  });
+</script>
+</html>

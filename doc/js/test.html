@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>博客 - @Luoyangs</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="../../fav.png" />
+</head>
+<body>
+	test javascript window对象
+</body>
+</html>
+<script>
+
+//返回窗口中所有命名的框架。
+console.log('window.frames',window.frames);
+//返回窗口是否已被关闭。
+console.log('window.closed',window.closed);
+//设置或返回窗口状态栏中的默认文本。
+window.defaultStatus = "this is setting status";
+console.log('window.defaultStatus',window.defaultStatus);
+//对 Document 对象的只读引用。
+console.log('window.document',window.document);
+//对 History 对象的只读引用。
+console.log('window.history',window.history);
+//返回窗口的文档显示区的高度。
+console.log('window.innerheight',window.innerheight);
+//返回窗口的文档显示区的宽度。
+console.log('window.innerwidth',window.innerwidth);
+
+//设置或返回窗口中的框架数量。
+console.log('window.length',window.length);
+//用于窗口或框架的 Location 对象
+console.log('window.location',window.location);
+//设置或返回窗口的名称。
+console.log('window.name',window.name);
+//对 Navigator 对象的只读引用。
+console.log('window.Navigator',window.Navigator);
+//返回对创建此窗口的窗口的引用。
+console.log('window.opener',window.opener);
+//返回窗口的外部高度。
+console.log('window.outerheight',window.outerheight);
+//返回窗口的外部宽度。
+console.log('window.outerwidth',window.outerwidth);
+
+//设置或返回当前页面相对于窗口显示区左上角的 X 位置
+console.log('window.pageXOffset',window.pageXOffset);
+//设置或返回当前页面相对于窗口显示区左上角的 Y 位置。
+console.log('window.pageYOffset',window.pageYOffset);
+//	返回父窗口。
+console.log('window.parent',window.parent);
+//对 Screen 对象的只读引用
+console.log('window.Screen',window.Screen);
+//返回对当前窗口的引用。
+console.log('window.self',window.self);
+//设置窗口状态栏的文本。
+window.status = "this is status"
+console.log('window.status',window.status);
+//返回最顶层的先辈窗口。
+console.log('window.top',window.top);
+//window 属性等价于 self 属性，它包含了对窗口自身的引用。
+console.log('window.window',window.window);
+//返回对当前窗口的引用。
+console.log('window.screen',window.screenLeft,screenTop,screenX,screenY);
+
+//JavaScript Array 对象
+var arr = new Array();
+console.log('arr.constructor',arr.constructor);
+console.log('arr.constructor == Array',arr.constructor == Array);
+
+var arr1 = new Array(3);
+arr1[0] = "a";
+arr1[1] = "b";
+arr1[2] = "c";
+console.log(arr1,arr1.length);
+arr1[5] = "d";
+console.log(arr1,arr1.length);
+arr1.length = 5;
+console.log(arr1,arr1.length);
+
+//concat() 方法用于连接两个或多个数组。该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。
+var arr1 = new Array(2);
+arr1[0] = "A";
+arr1[1] = "B";
+var arr2 = new Array(3);
+arr2[0] = "C0";
+arr2[1] = "C1";
+arr2[2] = "C2";
+var arr3 = new Array(2);
+arr3[0] = "D0";
+arr3[1] = "D1";
+console.log("arr.concat")
+console.log(arr1.concat(1));
+console.log(arr1.concat(arr2));
+console.log(arr1.concat([1,2,3]));
+console.log(arr1.concat(arr2,arr3));
+//join() 方法用于把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的。
+console.log("arr.join")
+console.log(arr2);
+console.log(arr2.join());
+console.log(arr2.join("%%"))
+//pop() 方法用于删除并返回数组的最后一个元素。如果数组已经为空，则 pop() 不改变数组，并返回 undefined 值。请注意，这也会改变数组的长度
+console.log(arr2);
+console.log(arr2.pop());
+console.log(arr2);
+//push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。注释：该方法会改变数组的长度。
+console.log(arr2);
+console.log(arr2.push("new"));
+console.log(arr2);
+console.log(arr2.push("new1","new2","new3"));
+console.log(arr2);
+//reverse() 方法用于颠倒数组中元素的顺序。注释：该方法会改变原来的数组，而不会创建新的数组。
+console.log(arr2);
+console.log(arr2.reverse());
+console.log(arr2);
+//shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。请注意，该方法不创建新数组，而是直接修改原有的 
+console.log(arr2);
+console.log(arr2.shift());
+console.log(arr2);
+//unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。请注意，unshift() 方法不创建新的创建，而是直接修改原有的数组。
+console.log(arr2);
+console.log(arr2.unshift("first"));
+console.log(arr2.unshift("first1","first2","first3","first4"));
+console.log(arr2);
+//slice() 方法可从已有的数组中返回选定的元素。请注意，该方法并不会修改数组，而是返回一个子数组。
+console.log(arr2);
+console.log(arr2.slice(1));
+console.log(arr2.slice(1,2));
+console.log(arr2.slice(-1));
+console.log(arr2.slice(-1,2));
+console.log(arr2);
+//sort() 方法用于对数组的元素进行排序。请注意，数组在原数组上进行排序，不生成副本。
+var arr = new Array(6)
+arr[0] = "10"
+arr[1] = "5"
+arr[2] = "40"
+arr[3] = "25"
+arr[4] = "1000"
+arr[5] = "1"
+console.log('arr',arr);
+console.log('arr.sort()',arr.sort());
+console.log('arr',arr);
+function sortBy(a,b){
+	return a-b;
+}
+console.log('arr.sort()',arr.sort(sortBy));
+console.log('arr',arr);
+//splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目。plice() 方法会直接对数组进行修改。
+arr = ["Tom","Tim","Tam"];
+console.log('arr',arr);
+console.log('arr',arr.splice(1,0));//[]
+console.log('arr',arr);//["Tom", "Tim", "Tam"]
+console.log('arr',arr.splice(1,0,'Tym'));//[]
+console.log('arr',arr);// ["Tom", "Tym", "Tim", "Tam"]
+console.log('arr',arr.splice(1,2,'Trm'));//["Tym", "Tim"]
+console.log('arr',arr);//["Tom", "Trm", "Tam"]
+console.log('arr',arr.splice(1,2,'Trm','Tem'));//["Trm", "Tam"]
+console.log('arr',arr);//["Tom", "Trm", "Tem"]
+console.log('arr',arr.splice(1,2,'Trm','Tem'));
+console.log('arr',arr);
+//toString() 方法可把数组转换为字符串，并返回结果。返回值与没有参数的 join() 方法返回的字符串相同。
+console.log('arr.toString',arr.toString())
+//toLocaleString() 方法,把数组转换为本地字符串。
+console.log('arr.toLocaleString',arr.toLocaleString())
+//valueOf() 方法返回 Array 对象的原始值。 JavaScript 在后台自动调用，并不显式地出现在代码中。
+console.log(arr.valueOf())
+
+// 对Date的扩展，将 Date 转化为指定格式的String   
+// 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，   
+// 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)   
+// 例子：   
+// (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423   
+// (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18   
+Date.prototype.Format = function(fmt)   { //author: meizz   
+  var o = {   
+    "M+" : this.getMonth()+1,                 //月份   
+    "d+" : this.getDate(),                    //日   
+    "h+" : this.getHours(),                   //小时   
+    "m+" : this.getMinutes(),                 //分   
+    "s+" : this.getSeconds(),                 //秒   
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+    "S"  : this.getMilliseconds()             //毫秒   
+  };   
+  if(/(y+)/.test(fmt))   
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+    if(new RegExp("("+ k +")").test(fmt)) {
+    	fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+    }  
+  return fmt;   
+}
+console.log(new Date().Format('yyyy-M-d h:m:s q S'));
+console.log(new Date().Format('yyyy-MM-dd hh:mm:ss q S'));
+
+Date.prototype.format = function(fmt){
+	var o = {
+		'M+':this.getMonth()+1,//月份
+		'd+':this.getDate(),//日期
+		'h+':this.getHours(),//时
+		'm+':this.getMinutes(),//分
+		's+':this.getSeconds(),//秒
+		'q+':(this.getMonth()+1)/3,//季度
+		'S+':this.getMilliseconds()//毫秒
+	};
+	if(/(y+)/.test(fmt)){
+		fmt = fmt.replace(RegExp.$1,(this.getFullYear()+"").substr(4-RegExp.$1.length));
+	}
+	for(let k in o){
+		if(new RegExp('('+k+')').test(fmt)){
+			fmt = fmt.replace(RegExp.$1,((RegExp.$1.length==1)? o[k]:('00'+o[k]).substr((o[k]+"").length)));
+		}
+	}
+	return fmt;
+}
+console.log(new Date().format('yyyy-M-d h:m:s q S'));
+console.log(new Date().format('yyyy-MM-dd hh:mm:ss q S'));
+
+/**       
+ * 对Date的扩展，将 Date 转化为指定格式的String       
+ * 月(M)、日(d)、12小时(h)、24小时(H)、分(m)、秒(s)、周(E)、季度(q) 可以用 1-2 个占位符       
+ * 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)       
+ * eg:       
+ * (new Date()).pattern("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423       
+ * (new Date()).pattern("yyyy-MM-dd E HH:mm:ss") ==> 2009-03-10 二 20:09:04       
+ * (new Date()).pattern("yyyy-MM-dd EE hh:mm:ss") ==> 2009-03-10 周二 08:09:04       
+ * (new Date()).pattern("yyyy-MM-dd EEE hh:mm:ss") ==> 2009-03-10 星期二 08:09:04       
+ * (new Date()).pattern("yyyy-M-d h:m:s.S") ==> 2006-7-2 8:9:4.18       
+ */          
+Date.prototype.pattern=function(fmt) {           
+  var o = {           
+	  "M+" : this.getMonth()+1, //月份           
+	  "d+" : this.getDate(), //日           
+	  "h+" : this.getHours()%12 == 0 ? 12 : this.getHours()%12, //小时           
+	  "H+" : this.getHours(), //小时           
+	  "m+" : this.getMinutes(), //分           
+	  "s+" : this.getSeconds(), //秒           
+	  "q+" : Math.floor((this.getMonth()+3)/3), //季度           
+	  "S" : this.getMilliseconds() //毫秒           
+  };           
+  var week = {           
+		"0" : "日",           
+		"1" : "一",           
+		"2" : "二",           
+		"3" : "三",           
+		"4" : "四",           
+		"5" : "五",           
+		"6" : "六"          
+  };           
+  if(/(y+)/.test(fmt)){           
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));           
+  }           
+  if(/(E+)/.test(fmt)){           
+    fmt=fmt.replace(RegExp.$1, ((RegExp.$1.length>1) ? (RegExp.$1.length>2 ? "星期" : "周") : "")+week[this.getDay()+""]);           
+  }           
+  for(var k in o){           
+    if(new RegExp("("+ k +")").test(fmt)){           
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));           
+    }           
+  }           
+  return fmt;           
+}
+console.log((new Date()).pattern("yyyy-MM-dd EEE hh:mm:ss"))
+</script>

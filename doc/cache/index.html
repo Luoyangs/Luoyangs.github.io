@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>博客 - @Luoyangs</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="../../fav.png" />
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="../../static/js/underscore-min.js"></script>
+	<style>
+		.navbar{border-radius: 0px;margin-bottom:0px;}
+		section{background:#EBEBEB;margin-top:0px;font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;}
+		#articleList{background:#fff;padding:16px;margin-top:20px;}
+		.title{font-size:26px;text-align:center;font-weight:700;}
+		.sub-title{font-size:16px;text-align:center;margin-left:32px;}
+		#articleList span{display:block;margin-bottom:8px;line-height:20px;}
+		.danger{color:#ff3366;}
+		.success{color:#4FC08D;}
+		#scrollspy > .nav {padding-left: 0px;background:#fff;margin-top:20px;padding:16px;min-width:250px;}
+	  /* all anchors */
+	  #scrollspy .nav > li > a {padding: 3px;border-left: 0px rgba(0,0,0,0);}
+	  /* first level */
+	  #scrollspy .nav li >  a {padding-left: 10px;}
+	  /* second */
+	  #scrollspy .nav .nav li >  a {padding-left: 20px;font-size:.9em;}
+	  /* third */
+	  #scrollspy .nav .nav .nav li >  a {padding-left: 30px;font-size:.8em;}
+	  /* fourth */
+	  #scrollspy .nav .nav .nav .nav li >  a {padding-left: 40px;}
+	  /* fifth */
+	  #scrollspy .nav .nav .nav .nav .nav li >  a {padding-left: 50px;}
+	  /* active link */
+	  #scrollspy li.active > a {font-weight:bold;border-left: 2px solid gray;}
+	  /* hide second level lists */
+	  #scrollspy .nav .nav {display:none;}
+	  /* show second-level when active */
+	  #scrollspy .nav > .active > .nav {display: block;}
+	  /* headings on the page (easier to see h5, h6) */
+	  #scrollspy h2, #scrollspy h3, #scrollspy h4, #scrollspy h5, #scrollspy h6 {font-style: italic;}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">博客在线</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+	        <li class="active"><a href="#">学习笔记</a></li>
+	        <li><a href="#">实习经验</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#">收藏</a></li>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Luoyangs <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#"><i class="glyphicon glyphicon-phone-alt"></i>&nbsp;&nbsp;手机</a></li>
+	            <li><a href="#"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;Email</a></li>
+	            <li><a href="#"><i class="glyphicon glyphicon-link"></i>&nbsp;&nbsp;QQ</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	<section style="margin-top:50px;">
+		<div class="container-fluid">
+			<div class="container">
+				<div class="col-sm-9">
+					<div id="articleList">
+						<p class="title">Web缓存</p>
+						<p class="sub-title">参考web技术文档</p>
+						<h2>1 Web缓存的作用与类型</h2>
+						<h3>1.1 前言&摘要</h3>
+						<p>
+<span>这段时间的工作内容主要是为一个客户端类型的产品增加文档在线存储和文档在线预览相关特性。由于测试的同事比较细心和专业，发现了项目实现中一些效率低下的环节，比如在线预览图片没有经过压缩、重开打开同一张图片没有有效利用Web缓存等问题。而这些细节问题往往在做项目架构时，容易因为时间紧张等等因素而被忽略。虽然以前也有一些关于Web缓存的意识，但并没有很系统的了解、总结，并在项目中进行合理的运用。借此机会，整理了一些相关资料和项目的实际应用实践，做个备忘，便于在日后的项目查询和应用。</span>
+<span>本文从Web缓存的定义、作用、分类、工作机制等方面介绍了目前常用的Web缓存及其原理，并给出如何构建有效利用Web缓存的站点。最后探讨了在HTML5和Web App、Web Game逐渐盛行的今天，现代浏览器给我们提供哪些有利于Web缓存、提高访问效率的机制，前端的代码架构又能从哪些方面进行调整，更好的利用Web缓存等问题。</span>
+		        </p>
+		        <h3>1.2 什么是Web缓存</h3>
+						<p>
+<span>Web缓存是指一个Web资源（如html页面，图片，js，数据等）存在于Web服务器和客户端（浏览器）之间的副本。缓存会根据进来的请求保存输出内容的副本；当下一个请求来到的时候，如果是相同的URL，缓存会根据缓存机制决定是直接使用副本响应访问请求，还是向源服务器再次发送请求。比较常见的就是浏览器会缓存访问过网站的网页，当再次访问这个URL地址的时候，如果网页没有更新，就不会再次下载网页，而是直接使用本地缓存的网页。只有当网站明确标识资源已经更新，浏览器才会再次下载网页。至于浏览器和网站服务器是如何标识网站页面是否更新的机制，将在后面介绍。</span>
+		        </p>
+		        <h3>1.3 Web缓存的作用</h3>
+		        <p>
+<span>使用Web缓存的作用其实是非常显而易见的：</span>
+<span>(1)减少网络带宽消耗</span>
+<span>无论对于网站运营者或者用户，带宽都代表着金钱，过多的带宽消耗，只会便宜了网络运营商。当Web缓存副本被使用时，只会产生极小的网络流量，可以有效的降低运营成本。</span>
+<span>(2)降低服务器压力</span>
+<span>给网络资源设定有效期之后，用户可以重复使用本地的缓存，减少对源服务器的请求，间接降低服务器的压力。同时，搜索引擎的爬虫机器人也能根据过期机制降低爬取的频率，也能有效降低服务器的压力。</span>
+<span>(3)减少网络延迟，加快页面打开速度</span>
+<span>带宽对于个人网站运营者来说是十分重要，而对于大型的互联网公司来说，可能有时因为钱多而真的不在乎。那Web缓存还有作用吗？答案是肯定的，对于最终用户，缓存的使用能够明显加快页面打开速度，达到更好的体验。</span>
+		        </p>
+		        <h3>1.4 Web缓存的类型</h3>
+		        <p>
+<span>在Web应用领域，Web缓存大致可以分为以下几种类型：</span>
+<span>(1)数据库数据缓存</span>
+<span>Web应用，特别是SNS类型的应用，往往关系比较复杂，数据库表繁多，如果频繁进行数据库查询，很容易导致数据库不堪重荷。为了提供查询的性能，会将查询后的数据放到内存中进行缓存，下次查询时，直接从内存缓存直接返回，提供响应效率。比如常用的缓存方案有memcached等。</span>
+<span>(2)服务器端缓存——代理服务器缓存</span>
+<span>代理服务器是浏览器和源服务器之间的中间服务器，浏览器先向这个中间服务器发起Web请求，经过处理后（比如权限验证，缓存匹配等），再将请求转发到源服务器。代理服务器缓存的运作原理跟浏览器的运作原理差不多，只是规模更大。可以把它理解为一个共享缓存，不只为一个用户服务，一般为大量用户提供服务，因此在减少相应时间和带宽使用方面很有效，同一个副本会被重用多次。常见代理服务器缓存解决方案有Squid等</span>
+<span>(3)服务器端缓存—— CDN缓存</span>
+<span>CDN（Content delivery networks）缓存，也叫网关缓存、反向代理缓存。CDN缓存一般是由网站管理员自己部署，为了让他们的网站更容易扩展并获得更好的性能。浏览器先向CDN网关发起Web请求，网关服务器后面对应着一台或多台负载均衡源服务器，会根据它们的负载请求，动态将请求转发到合适的源服务器上。虽然这种架构负载均衡源服务器之间的缓存没法共享，但却拥有更好的处扩展性。从浏览器角度来看，整个CDN就是一个源服务器，从这个层面来说，本文讨论浏览器和服务器之间的缓存机制，在这种架构下同样适用。</span>
+		        </p>
+		        <h3>1.5 浏览器端缓存</h3>
+		        <p>
+<span>浏览器缓存根据一套与服务器约定的规则进行工作，在同一个会话过程中会检查一次并确定缓存的副本足够新。如果你浏览过程中，比如前进或后退，访问到同一个图片，这些图片可以从浏览器缓存中调出而即时显现。</span>
+		        </p>
+		        <h3>1.6 Web应用层缓存</h3>
+		        <p>
+<span>应用层缓存指的是从代码层面上，通过代码逻辑和缓存策略，实现对数据，页面，图片等资源的缓存，可以根据实际情况选择将数据存在文件系统或者内存中，减少数据库查询或者读写瓶颈，提高响应效率。</span>
+		        </p>
+		        <h2>2 Web浏览器的缓存机制</h2>
+		        <h3>2.1 Web缓存的工作原理</h3>
+		        <p>
+<span>所有的缓存都是基于一套规则来帮助他们决定什么时候使用缓存中的副本提供服务（假设有副本可用的情况下，未被销毁回收或者未被删除修改）。这些规则有的在协议中有定义（如HTTP协议1.0和1.1），有的则是由缓存的管理员设置（如DBA、浏览器的用户、代理服务器管理员或者应用开发者）。</span>
+		        </p>
+		        <h3>2.2 浏览器端的缓存规则</h3>
+		        <p>
+<span>对于浏览器端的缓存来讲，这些规则是在HTTP协议头和HTML页面的Meta标签中定义的。他们分别从新鲜度和校验值两个维度来规定浏览器是否可以直接使用缓存中的副本，还是需要去源服务器获取更新的版本。</span>
+		        </p>
+		        <h4>2.2.1 新鲜度（过期机制）</h4>
+		        <p>
+<span>也就是缓存副本有效期。一个缓存副本必须满足以下条件，浏览器会认为它是有效的，足够新的：</span>
+<span>(1)含有完整的过期时间控制头信息（HTTP协议报头），并且仍在有效期内；</span>
+<span>(2)浏览器已经使用过这个缓存副本，并且在一个会话中已经检查过新鲜度；</span>
+<span>满足以上两个情况的一种，浏览器会直接从缓存中获取副本并渲染。</span>
+		        </p>
+		        <h4>2.2.2 校验值（验证机制）</h4>
+		        <p>
+<span>服务器返回资源的时候有时在控制头信息带上这个资源的实体标签Etag（Entity Tag），它可以用来作为浏览器再次请求过程的校验标识。如过发现校验标识不匹配，说明资源已经被修改或过期，浏览器需求重新获取资源内容。</span>
+		        </p>
+		        <h3>2.3 浏览器缓存的控制</h3>
+		        <h4>2.3.1 使用HTML Meta 标签</h4>
+		        <p>
+<span>Web开发者可以在HTML页面的&lt;head&gt;节点中加入&lt;meta&gt;标签，代码如下：</span>
+<pre>
+&lt;META HTTP-EQUIV="Pragma" CONTENT="no-cache"&gt;
+</pre>
+<span>上述代码的作用是告诉浏览器当前页面不被缓存，每次访问都需要去服务器拉取。使用上很简单，但只有部分浏览器可以支持，而且所有缓存代理服务器都不支持，因为代理不解析HTML内容本身。</span>
+		        </p>
+		        <h4>2.3.2 使用缓存有关的HTTP消息报头</h4>
+		        <p>
+<span>一个URI的完整HTTP协议交互过程是由HTTP请求和HTTP响应组成的。在HTTP请求和响应的消息报头中，常见的与缓存有关的消息报头有：</span>
+<span>(1)Cache-Control与Expires</span>
+<span>Cache-Control与Expires的作用一致，都是指明当前资源的有效期，控制浏览器是否直接从浏览器缓存取数据还是重新发请求到服务器取数据。只不过Cache-Control的选择更多，设置更细致，如果同时设置的话，其优先级高于Expires。</span>
+<span>(2)Last-Modified/ETag与Cache-Control/Expires</span>
+<span>配置Last-Modified/ETag的情况下，浏览器再次访问统一URI的资源，还是会发送请求到服务器询问文件是否已经修改，如果没有，服务器会只发送一个304回给浏览器，告诉浏览器直接从自己本地的缓存取数据；如果修改过那就整个数据重新发给浏览器；</span>
+<span>Cache-Control/Expires则不同，如果检测到本地的缓存还是有效的时间范围内，浏览器直接使用本地副本，不会发送任何请求。两者一起使用时，Cache-Control/Expires的优先级要高于Last-Modified/ETag。即当本地副本根据Cache-Control/Expires发现还在有效期内时，则不会再次发送请求去服务器询问修改时间（Last-Modified）或实体标识（Etag）了。</span>
+<span>一般情况下，使用Cache-Control/Expires会配合Last-Modified/ETag一起使用，因为即使服务器设置缓存时间, 当用户点击“刷新”按钮时，浏览器会忽略缓存继续向服务器发送请求，这时Last-Modified/ETag将能够很好利用304，从而减少响应开销。</span>
+<span>(3)Last-Modified与ETag</span>
+<span>你可能会觉得使用Last-Modified已经足以让浏览器知道本地的缓存副本是否足够新，为什么还需要Etag（实体标识）呢？HTTP1.1中Etag的出现主要是为了解决几个Last-Modified比较难解决的问题：</span>
+<span>--a.Last-Modified标注的最后修改只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，它将不能准确标注文件的新鲜度</span>
+<span>--b.如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存</span>
+<span>--c.有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形</span>
+<span>Etag是服务器自动生成或者由开发者生成的对应资源在服务器端的唯一标识符，能够更加准确的控制缓存。Last-Modified与ETag是可以一起使用的，服务器会优先验证ETag，一致的情况下，才会继续比对Last-Modified，最后才决定是否返回304。</span>
+		        </p>
+		        <h4>2.3.3 用户操作行为与缓存</h4>
+		        <p>
+<span>用户在使用浏览器的时候，会有各种操作，比如输入地址后回车，按F5刷新等，这些行为会对缓存有什么影响呢？</span>
+<span>当用户在按F5进行刷新的时候，会忽略Expires/Cache-Control的设置，会再次发送请求去服务器请求，而Last-Modified/Etag还是有效的，服务器会根据情况判断返回304还是200；而当用户使用Ctrl+F5进行强制刷新的时候，只是所有的缓存机制都将失效，重新从服务器拉去资源。</span>
+		        </p>
+		        <h4>2.3.4 哪些请求不能被缓存？</h4>
+		        <p>
+<span>(1)HTTP信息头中包含Cache-Control:no-cache，pragma:no-cache，或Cache-Control:max-age=0等告诉浏览器不用缓存的请求</span>
+<span>(2)需要根据Cookie，认证信息等决定输入内容的动态请求是不能被缓存的</span>
+<span>(3)经过http安全加密的请求（有人也经过测试发现，ie其实在头部加入Cache-Control：max-age信息，firefox在头部加入Cache-Control:Public之后，能够对http的资源进行缓存</span>
+<span>(4)POST请求无法被缓存</span>
+<span>(5)HTTP响应头中不包含Last-Modified/Etag，也不包含Cache-Control/Expires的请求无法被缓存</span>
+		        </p>
+		        <h2>3 如何构建可缓存站点</h2>
+		        <h3>3.1 同一个资源保证URL的稳定性</h3>
+		        <p>
+<span>URL是浏览器缓存机制的基础，所以如果一个资源需要在多个地方被引用，尽量保证URL是固定的。同时，比较推荐使用公共类库，比如Google Ajax Library等，有利于最大限度使用缓存</span>
+		        </p>
+		        <h3>3.2 给Css、js、图片等资源增加HTTP缓存头，并强制入口Html不被缓存</h3>
+		        <p>
+<span>对于不经常修改的静态资源，比如Css，js，图片等，可以设置一个较长的过期的时间，或者至少加上Last-Modified/Etag，而对于html页面这种入口文件，不建议设置缓存。这样既能保证在静态资源不变了情况下，可以不重发请求或直接通过304避免重复下载，又能保证在资源有更新的，只要通过给资源增加时间戳或者更换路径，就能让用户访问最新的资源</span>
+		        </p>
+						<h3>3.3 减少对Cookie的依赖</h3>
+		        <p>
+<span>过多的使用Cookie会大大增加HTTP请求的负担，每次GET或POST请求，都会把Cookie都带上，增加网络传输流量，导致增长交互时间；同时Cache是很难被缓存的，应该尽量少使用，或者这在动态页面上使用。</span>
+		        </p>
+		        <h3>3.4 减少对http加密协议的使用</h3>
+		        <p>
+<span>通过http请求的资源，默认是不会被缓存的，必须通过特殊的配置，才能让资源得到缓存。建议只对涉及敏感信息的请求使用http传输，其他类似Css，Js，图片这些静态资源，尽量避免使用。</span>
+		        </p>
+		        <h3>3.5 多用Get方式请求动态Cgi</h3>
+		        <p>
+<span>虽然POST的请求方式比Get更安全，可以避免类似密码这种敏感信息在网络传输，被代理或其他人截获，但是Get请求方式更快，效率更高，而且能被缓存，建议对于那些不涉及敏感信息提交的请求尽量使用Get方式请求</span>
+		        </p>
+		        <h3>3.6 动态CGI也是可以被缓存</h3>
+		        <p>
+<span>如果动态脚本或CGI输入的内容在一定的时间范围内是固定的，或者根据GET参数相同，输入的内容相同，我们也认为请求是可以被缓存的，有以下几种方式，可以达到这个效果：</span>
+<span>--a.让动态脚本定期将内容改变时导出成静态文件，Web直接访问带有Last-Modified/Etag的静态文件</span>
+<span>--b.开发者可以通过代码给动态脚本的响应头中添加Cache-Control: max-age，告诉浏览器在过期前可以直接使用副本</span>
+<span>--c.通过代码给动态脚本的响应头添加Last-Modified/Etag信息，浏览器再次请求的时候，可以通过解析If-Modified-Since/If-None-Match得知浏览器是否存在缓存，由代码逻辑控制是否返回304</span>
+		        </p>
+		        <h3>3.7 如何给站点增加缓存机制</h3>
+		        <p>
+<span>HTTP请求/响应头中缓存报头对有效利用站点缓存，作为一个Web前端开发者，我要做什么呢？答案是：啥都不用做。不过要去推动Web运营人员、Web后端开发人员分别给服务器和动态脚本CGI增加合适的缓存报头。</span>
+		        </p>
+		        <h3>3.8 编写可缓存的动态脚本</h3>
+		        <p>
+<span>服务器配置的方法比较简单通用，但是如果遇到没有权限修改服务器配置或者需要添加更细致的Expires/Cache-Control/Etag等信息时，不妨可以试试从代码层面去添加这些信息。不同语言写法实现略有不同，但思路都是一致的。可以在单独开辟一个独立模块，调用语言库提供的添加报头的接口，根据需要设置报头信息。当某个请求的动态脚本需要被缓存时，可以采用类似include，require等模块引用方式调用公共模块，实现缓存机制。</span>
+		        </p>
+		        <h2>4 Html5时代的Web缓存机制</h2>
+		        <p>
+<span>随着现代浏览器的推动，Flash放弃对移动端的支持，HTML5无疑成为当前Web前端炙手可热的话题。各大游戏开发商、App开发商纷纷投入人力进行研究和技术储备。相信不久的将来，HTML5会迎来一个快速发展和普及的春天。那么，HTML5这个新一代的标准，又给我们带来哪些缓存机制呢？</span>
+		        </p>
+		        <h3>4.1 HTML5 之离线应用Manifest</h3>
+		        <p>
+<span>我们知道，使用传统的技术，就算是对站点的资源都实施了比较好的缓存策略，但是在断网的情况下，是无法访问的，因为入口的HTML页面我们一般运维的考虑，不会对其进行缓存。HTML5的Cache Manifest离线应用特性就能够帮助我们构建离线也能使用的站点，所有的资源都使用浏览器本地缓存，当然前提是要求在联网的情形下使用过一次站点。</span>
+		        </p>
+		        <h3>4.2 如何实现离线访问特性</h3>
+		        <p>
+<span>实现的步骤非常简单，主要3个步骤： </span>
+<span>(1)在服务器上添加MIME TYPE支，让服务器能够识别manifest后缀的文件</span>
+<span>(2)创建一个后缀名为.manifest的文件，把需要缓存的文件按格式写在里面，并用注释行标注版本</span>
+<pre>
+CACHE MANIFEST
+# 直接缓存的文件
+CACHE:
+Path/to/cache.js
+# version：2012-03-20
+</pre>
+<span>(3)给 html 标签加 manifest 属性，并引用manifest文件</span>
+<pre>
+html manifest=”path/to/name-of.manifest”
+</pre>
+		        </p>
+		        <h3>4.3 离线应用访问及更新流程</h3>
+		        <p>
+<span>--a.第一次访问离线应用的入口页HTML（引用了manifest文件），正常发送请求，获取manifest文件并在本地缓存，陆续拉取manifest中的需要缓存的文件</span>
+<span>--b.再次访问时，无法在线离线与否，都会直接从缓存中获取入口页HTML和其他缓存的文件进行展示。如果此时在线，浏览器会发送请求到服务器请求manifest文件，并与第一次访问的副本进行比对，如果发现版本不一致，会陆续发送请求重新拉取入口文件HTML和需要缓存的文件并更新本地缓存副本</span>
+<span>--c.之后的访问重复第2步的行为</span>
+		        </p>
+		        <h3>4.4 离线机制的缓存用途</h3>
+		        <p>
+<span>从Manifest的机制来看，即使我们不是为了创建离线应用，也同样可以使用这种机制用于缓存文件，可以说是给Web缓存提供多一种可以选择的途径。</span>
+		        </p>
+		        <h3>4.5 存在的问题：缓存文件更新控制不灵活</h3>
+		        <p>
+<span>就目前HTML5提供的manifest机制来讲，一个页面只能引用一个manifest页面，而且一旦发现这个manifest改变了，就会把里面所有定义的缓存文件全部重新拉取一遍，不管实际上有没有更新，控制比较不灵活。针对这个问题，也有的同学提出了一些建议，比如把需要缓存的文件分模块切分到不同manifest中，并分开用HTML引用，再使用强大的iframe嵌入到入口页面，这样就当某一个模式需要有更新，不会导致其他模块的文件也重新拉取一遍。</span>
+		        </p>
+		        <h3>4.6 HTML5 之本地存储localstorage</h3>
+		        <p>
+<span>HTML5给我们提供本地存储localstorage特性，严格来讲，其实已经不算传统Web缓存的范畴。因为它存储的地方是跟Web缓存分开的，是浏览器重新开辟的一个地方。</span>
+<span>本地存储localstorage的作用主要使Web页面能够通过浏览器提供的set/get接口，存储一些自定义的信息到本地硬盘，并且在单次访问或以后的访问过程中随时获取或修改。</span>
+<span>Localstorage提供了几个非常易用的Api，setItem/getItem/removeItem/clear</span>
+<span>Localstorage设计的本意可能是用来存储一些用户操作的个性化设置的文本类型的信息和数据，当我们其实也可能拿来当Web缓存区使用，比如我们可以将Base64格式编码的图片信息，存在localstorage中，再次访问时，直接本地获取后，使用CSS3的Data:image的方式直接展现出来。</span>
+<span>按照目前标准，目前浏览器只给每个独立的域名提供5m的存储空间，当存储超过5m，浏览器就会弹出警告框。</span>
+		        </p>
+					</div>
+				</div>
+				<div class="col-sm-3" id="scrollspy"></div>
+			</div>
+		</div>
+	</section>
+</body>
+<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+<script src="../../static/js/dynamicscrollspy.js"></script>
+<script>
+  $(function() {
+    $('#scrollspy').DynamicScrollspy({
+      genIDs: true,
+      testing: true
+    });
+  });
+</script>
+</html>

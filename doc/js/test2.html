@@ -1,0 +1,86 @@
+<button id='do'> Do long calc!</button>
+<div id='status'></div>
+<div id='result'></div>
+ <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$('#do').on('click', function(){
+  
+  $('#status').text('calculating....'); //此处会触发redraw事件的fired，但会放到队列里执行，直到long()执行完。
+  
+  // without set timeout, user will never see "calculating...."
+  //long();//执行长时间任务，阻塞
+   
+  // with set timeout, works as expected
+  //setTimeout(long,50);//用定时器，大约50ms以后执行长时间任务，放入执行队列，但在redraw之后了，根据先进先出原则
+  long();
+ })
+  
+  
+
+  
+function long(){
+  var result = 0
+  for (var i = 0; i<1000; i++){
+    for (var j = 0; j<1000; j++){
+      for (var k = 0; k<1000; k++){
+        result = result + i+j+k
+      }
+    } 
+  }
+  $('#status').text('calclation done') // has to be in here for this example. or else it will ALWAYS run instantly. This is the same as passing it a callback 
+}
+
+var p1 = new Promise(function (resolve, reject) {
+  setTimeout(() => reject(new Error('fail')), 3000)
+})
+
+var p2 = new Promise(function (resolve, reject) {
+  setTimeout(() => resolve(p1), 1000)
+})
+
+p2
+  .then(result => console.log(result))
+  .catch(error => console.log(error));
+
+var loadImage = function(url){
+    return new Promise(function(resolved,rejected){
+        var image = new Image();
+        image.onload = function(){
+            resolved(image);
+        };
+        image.onerror = function(){
+            rejected('image load error');
+        };
+        image.src = url;
+    });
+}
+
+var getJSON = function(url){
+    return new Promise(function(resolved,rejected){
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET',url);
+        xhr.onreadystatechange = handler;
+        xhr.responseType = "json";
+        xhr.setRequestHeader('Accept','application/json');
+        xhr.send();
+
+        function handler(){
+            if(xhr.readyState!= 4){
+                return;
+            }
+            if(xhr.status != 200){
+                rejected(this.statusText);
+            }else{
+                resolved(xhr.response);
+            }
+        }
+    });
+}
+
+
+getJSON('/android studio.txt').then(function(data){
+    console.log(data);
+},function(err){
+    console.log(err);
+});
+</script>

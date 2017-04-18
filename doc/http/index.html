@@ -5,9 +5,9 @@
 	<title>博客 - @Luoyangs</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/x-icon" href="../../fav.png" />
-	<link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="../../static/js/underscore-min.js"></script>
 	<style>
 		.navbar{border-radius: 0px;margin-bottom:0px;}
@@ -219,8 +219,43 @@ Content-Type: text/html
 <img src="res/c1.gif" alt="">
 <span>点击被拦截的请求，可以在右栏直接修改报文内容（上半区域是请求报文，下半区域是响应报文），点击黄色的“Break on Response”按钮可以执行下一步（把请求发给服务器），点击绿色的按钮“Run to Completion”可以直接完成整个请求过程：</span>
 <img src="res/c2.gif" alt="">				
-
-
+						</p>
+						<h3>6.3 浏览器的强制策略</h3>
+						<p>
+<span>如上述，当下大多数浏览器在点击刷新按钮或按F5时会自行加上“Cache-Control:max-age=0”请求字段，所以我们先约定成俗——后文提及的“刷新”多指的是选中url地址栏并按回车键（这样不会被强行加上Cache-Control）。事实上有的浏览器还有一些更奇怪的行为，在后续我们回答文章开头问题的时候会提到。</span>
+						</p>
+						<h2>7 石器时代的缓存方式</h2>
+						<p><span>在 http1.0 时代，给客户端设定缓存方式可通过两个字段——“Pragma”和“Expires”来规范。虽然这两个字段早可抛弃，但为了做http协议的向下兼容，你还是可以看到很多网站依旧会带上这两个字段。</span></p>
+						<h3>7.1 Pragma</h3>
+						<p>
+<span>当该字段值为“no-cache”的时候（事实上现在RFC中也仅标明该可选值），会知会客户端不要对该资源读缓存，即每次都得向服务器发一次请求才行。</span>
+<span>Pragma属于通用首部字段，在客户端上使用时，常规要求我们往html上加上这段meta元标签（而且可能还得做些hack放到body后面去）：</span>
+<pre>
+&lt;meta http-equiv="Pragma" content="no-cache"&gt;
+</pre>
+<span>它告诉浏览器每次请求页面时都不要读缓存，都得往服务器发一次请求才行。</span>
+<span>BUT!!! 事实上这种禁用缓存的形式用处很有限：</span>
+<span>1. 仅有IE才能识别这段meta标签含义，其它主流浏览器仅能识别“Cache-Control: no-store”的meta标签</span>
+<span>2. 在IE中识别到该meta标签含义，并不一定会在请求字段加上Pragma，但的确会让当前页面每次都发新请求（仅限页面，页面上的资源则不受影响）。</span>
+<span style="color:red">做了测试后发现也的确如此，这种客户端定义Pragma的形式基本没起到多少作用。</span>
+<img src="res/c5.png" alt="">
+<span>如上图红框部分是再次刷新页面时生成的请求，这说明禁用缓存生效，预计浏览器在收到服务器的Pragma字段后会对资源进行标记，禁用其缓存行为，进而后续每次刷新页面均能重新发出请求而不走缓存。</span>
+						</p>
+						<h3>7.2 Expires</h3>
+						<p>
+<span>有了Pragma来禁用缓存，自然也需要有个东西来启用缓存和定义缓存时间，对http1.0而言，Expires就是做这件事的首部字段。</span>
+<span>Expires的值对应一个GMT（格林尼治时间），比如“Mon, 22 Jul 2002 11:12:01 GMT”来告诉浏览器资源缓存过期时间，如果还没过该时间点则不发请求。</span>
+<span>在客户端我们同样可以使用meta标签来知会IE（也仅有IE能识别）页面（同样也只对页面有效，对页面上的资源无效）缓存时间：</span>
+<pre>
+&lt;meta http-equiv="expires" content="mon, 18 apr 2016 14:30:00 GMT"&gt;
+</pre>
+<span>如果希望在IE下页面不走缓存，希望每次刷新页面都能发新请求，那么可以把“content”里的值写为“-1”或“0”。</span>
+<span>注意的是该方式仅仅作为知会IE缓存时间的标记，你并不能在请求或响应报文中找到Expires字段。如果是在服务端报头返回Expires字段，则在任何浏览器中都能正确设置资源缓存的时间</span>
+<img src="res/c6.png" alt="">
+<span style="color:red">那么如果Pragma和Expires一起上阵的话，听谁的？我们试一试就知道了：</span>
+<img src="res/c7.png" alt="">
+<span>我们通过Pragma禁用缓存，又给Expires定义一个还未到期的时间（红框），刷新页面时发现均发起了新请求（蓝框），这意味着Pragma字段的优先级会更高。</span>
+<span>BUT，响应报文中Expires所定义的缓存时间是相对服务器上的时间而言的，如果客户端上的时间跟服务器上的时间不一致（特别是用户修改了自己电脑的系统时间），那缓存时间可能就没啥意义了。</span>
 						</p>
 					</div>
 				</div>
