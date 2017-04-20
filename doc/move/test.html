@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>博客 - @Luoyangs</title>
+	<style type="text/css">
+		#box{width:100px;height: 100px;background:#ff3355;position: absolute;left: 10px;top:100px;}
+	</style>
+	
+</head>
+<body>
+	<input type="button" id="btn" value="move">
+	<div id="box"></div>
+</body>
+<script type="text/javascript">
+		
+		window.addEventListener('DOMContentLoaded',function(){
+			var btn = document.getElementById('btn');
+			var box = document.getElementById('box');
+			var timer;
+			btn.addEventListener('click',function(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					box.style.left = box.offsetLeft + 10 + 'px';
+					console.log(box.offsetLeft)
+				},3000);
+			},false);
+		},false);
+		
+	</script>
+</html>

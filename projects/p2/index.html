@@ -33,6 +33,7 @@
 		.tip-ul{padding:0px;padding-top:16px;}
 		.tip-ul li{list-style:none;}
 		.tip-ul li a{font-size:16px;line-height:35px;color:#555;display:block;}
+		.ts{color:#444;font-weight:600;}
 	</style>
 </head>
 <body>
@@ -138,7 +139,7 @@ $(function(){
 		lanf:'Bootstrasp/React',
 		lanb:'Java SpringMVC+myBatis',
 		imgs:['screenshorts/p1_1.png','screenshorts/p1_2.png','screenshorts/p1_3.png','screenshorts/p1_4.png','screenshorts/p1_5.png','screenshorts/p1_6.png','screenshorts/p1_7.png','screenshorts/p1_8.png','screenshorts/p1_9.png','screenshorts/p1_10.png','screenshorts/p1_11.png','screenshorts/p1_12.png','screenshorts/p1_13.png','screenshorts/p1_14.png','screenshorts/p1_15.png','screenshorts/p1_16.png'],
-		info:'这个项目前后分了三个阶段，第一阶段就是总体设计和PC端实现，这一部分主要系统结构的确定和数据库的原型设计，此外就是对是页面布局的复习与运用，包括前端的模板引擎的使用；第二部分时移动端Android和IOS，主要为接口编写与测试和移动端开发；第三阶段正是现在还未完成的部分——微信公众号开发，为符合客户要求，采用响应式布局方案，在现有的移动框架——React基础上进行开发。尤其是再解决浏览器兼容、页面性能优化时碰到了很多问题，但最后都受益良多。但是在做消息推送的时候没有做好，是依托第三方JPush完成而不是HTML5时兴的Websocket，这点需要后面项目改进'
+		info:'这个项目前后分了三个阶段:<span class="ts">第一阶段</span>就是总体设计和PC端实现，这一部分主要系统结构的确定和数据库的原型设计，此外就是对是页面布局的复习与运用，包括前端的模板引擎的使用；<span class="ts">第二阶段</span>时移动端Android和IOS，主要为接口编写与测试和移动端开发；<span class="ts">第三阶段</span>正是现在正在完善且即将交付——微信公众号开发，为符合客户要求，采用响应式布局方案，在现有的移动框架——React基础上进行开发。尤其是再解决浏览器兼容、页面性能优化时碰到了很多问题，但最后都受益良多。但是在做消息推送的时候没有做好，是依托第三方JPush完成而不是HTML5时兴的Websocket，这点需要后面项目改进'
 	};
 	var compiled = _.template($("#product").html());
   //清空全部留言中的所有节点

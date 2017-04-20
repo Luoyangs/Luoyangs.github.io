@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>博客 - @Luoyangs</title>
+	<style type="text/css">
+		#box{width:100px;height: 100px;background:#ff3355;position: absolute;left: 10px;top:100px;}
+	</style>
+	<script src="test/require.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+		require(['test/a']);
+
+		require(['test/a','test/b']);
+
+		require(['test/b'],function(){
+			console.log('load finish');
+		});
+
+		require(['test/c'],function(c){
+			c.showMes();
+		});
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="move">
+	<div id="box"></div>
+</body>
