@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //根据基本工资和绩效计算实际工资
+    var performancesA = function() {};
+    performancesA.prototype.calculate = function(salary) {
+      return salary * 4;
+    }
+
+    var performancesB = function() {};
+    performancesB.prototype.calculate = function(salary) {
+      return salary * 3;
+    }
+
+    var performanceC = function() {};
+    performanceC.prototype.calculate = function(salary) {
+      return salary * 2;
+    }
+
+    var Bound = function() {
+      this.salary = null;
+      this.strategy = null;
+    }
+    Bound.prototype.setSalary = function(salary) {
+      this.salary = salary;
+    }
+    Bound.prototype.setStrategy = function(strategy) {
+      this.strategy = strategy;
+    }
+    Bound.prototype.getBounds = function() {
+      return this.strategy.calculate(this.salary);
+    }
+
+    var a = new Bound();
+    a.setSalary(1000);
+    a.setStrategy(new performancesA());
+    console.log(a.getBounds());
+    a.setStrategy(new performancesB());
+    console.log(a.getBounds());
+
+
+    var strategies = {
+      'A': function(salary) {
+        return salary * 4;
+      },
+      'B': function(salary) {
+        return salary * 3;
+      },
+      'C': function(salary) {
+        return salary * 2;
+      }
+    };
+    var calculate = function(level, salary) {
+      return strategies[level](salary);
+    }
+    console.log(calculate('A', 1000));
+    console.log(calculate('B', 1000));
+  </script>
+</body>
+
+</html>

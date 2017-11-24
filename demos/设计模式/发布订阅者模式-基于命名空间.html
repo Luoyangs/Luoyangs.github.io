@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .btn {
+      height: 40px;
+      text-align: center;
+      color: #ff3355;
+      line-height: 40px;
+      border: 1px solid;
+      cursor: pointer;
+      margin-bottom: 9px;
+    }
+    
+    .show {
+      font-size: 20px;
+      color: #00bb44;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="btn btn1">点击我1</div>
+    <div class="btn btn2">点击我2</div>
+    <div class="btn btn3">点击我3</div>
+    <div class="show"></div>
+  </div>
+</body>
+<script>
+  var Event = (function() {
+    var _listen,
+      _trigger,
+      _remove,
+      _create,
+      _each,
+      namespacesCache = {};
+
+    _each = function(arrs, fn) {
+      for (var i = 0, len = arrs.length; i < len; i++) {
+        fn.call(arrs[i], i, arrs[i]);
+      }
+    };
+
+    _listen = function(key, fn, cache) {
+      if (!cache[key]) {
+        cache[key] = [];
+      }
+      cache[key].push(fn);
+    };
+
+    _trigger = function() {
+      var cache = Array.prototype.shift.call(arguments),
+        key = Array.prototype.shift.call(arguments),
+        args = arguments,
+        _this = this,
+        stack = cache[key];
+
+      if (!stack || !stack.length) {
+        return;
+      }
+      _each(stack, function() {
+        return this.apply(_this, args);
+      });
+    };
+
+    _remove = function(key, cache, fn) {
+      if (cache[key]) {
+        if (fn) {
+          for (var i = cache[key].length - 1; i >= 0; i--) {
+            if (cache[key][i] === fn) {
+              cache[key].splice(i, 1);
+            }
+          }
+        } else {
+          cache[key] = [];
+        }
+      }
+    };
+
+    _create = function(namespace) {
+      var namespace = namespace || 'default',
+        cache = {},
+        offlineStack = [],
+        ret;
+
+      ret = {
+        listen: function(key, fn, last) {
+          _listen(key, fn, cache);
+          if (offlineStack === null) {
+            return;
+          }
+          if (last === 'last') {
+            offlineStack.length && offlineStack.pop()();
+          } else {
+            _each(offlineStack, function() {
+              this();
+            });
+          }
+          offlineStack = null;
+        },
+
+        one: function(key, fn, last) {
+          _remove(key, cache);
+          this.listen(key, fn, last);
+        },
+
+        remove: function(key, fn) {
+          _remove(key, cache, fn);
+        },
+
+        trigger: function() {
+          var fn,
+            args,
+            _self = this;
+
+          Array.prototype.unshift.call(arguments, cache);
+          args = arguments;
+          fn = function() {
+            return _trigger.apply(_self, args);
+          };
+          if (offlineStack) {
+            return offlineStack.push(fn);
+          }
+          return fn();
+        }
+      };
+
+      return namespace ? (namespacesCache[namespace] ? namespacesCache[namespace] : namespacesCache[namespace] = ret) : ret;
+    }
+
+    return {
+      create: _create,
+      one: function(key, fn, last) {
+        var event = this.create();
+        event.one(key, fn, last);
+      },
+      remove: function(key, fn) {
+        var event = this.create();
+        event.remove(key, fn);
+      },
+      listen: function(key, fn, last) {
+        var event = this.create();
+        event.listen(key, fn, last);
+      },
+      trigger: function() {
+        var event = this.create();
+        event.trigger.apply(this, arguments);
+      }
+    };
+  })();
+
+  var count = 0;
+  var btn1 = (function() {
+    var btn = document.getElementsByClassName('btn1')[0];
+
+    btn.onclick = function() {
+      Event.create('namespace1').trigger('add', count++);
+    };
+  })();
+
+  var btn2 = function() {
+    var btn = document.getElementsByClassName('btn2')[0];
+
+    btn.onclick = function() {
+      Event.create('namespace2').trigger('add', count++);
+    };
+  }();
+
+  var btn3 = function() {
+    var btn = document.getElementsByClassName('btn3')[0];
+
+    btn.onclick = function() {
+      Event.trigger('add', count++);
+    };
+  }();
+
+  var show = function() {
+    var show = document.getElementsByClassName('show')[0];
+    Event.create('namespace1').listen('add', function(data) {
+      show.innerHTML = data;
+    });
+
+    Event.listen('add', function(data) {
+      show.innerHTML = data + 'no space';
+    });
+
+
+  }();
+</script>
+
+</html>

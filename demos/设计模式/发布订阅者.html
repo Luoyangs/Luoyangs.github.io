@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .btn {
+      height: 40px;
+      text-align: center;
+      color: #ff3355;
+      line-height: 40px;
+      border: 1px solid;
+      cursor: pointer;
+    }
+    
+    .show {
+      font-size: 20px;
+      color: #00bb44;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="btn">点击我</div>
+    <div class="show"></div>
+  </div>
+</body>
+<script>
+  var arr = [];
+  console.log(arr === null)
+
+  var Event = (function() {
+    var clientList = {},
+      listen,
+      trigger,
+      remove;
+
+    listen = function(key, fn) {
+      if (!clientList[key]) {
+        clientList[key] = [];
+      }
+      clientList[key].push(fn);
+    };
+
+    trigger = function() {
+      var key = Array.prototype.shift.call(arguments),
+        fns = clientList[key];
+
+      if (!fns || fns.length === 0) {
+        return;
+      }
+
+      for (var i = 0, fn; fn = fns[i++];) {
+        fn.apply(this, arguments);
+      }
+    };
+
+    remove = function(key, fn) {
+      var fns = clientList[key];
+      if (!fns) {
+        return;
+      }
+      if (!fn) {
+        fns && (fns.length = 0);
+      } else {
+        for (var i = fns.length - 1; i >= 0; i--) {
+          var _fn = fns[i];
+          if (fn === _fn) {
+            fns.splice(i, 1);
+          }
+        }
+      }
+    };
+
+    return {
+      listen: listen,
+      trigger: trigger,
+      remove: remove
+    }
+  })();
+
+  var btn = (function() {
+    var count = 0,
+      btn = document.querySelector('.btn');
+    btn.onclick = function() {
+      Event.trigger('add', count++);
+    };
+  })();
+
+  var show = (function() {
+    var show = document.querySelector('.show');
+    Event.listen('add', function(data) {
+      show.innerHTML = data;
+    })
+  })();
+</script>
+
+</html>
