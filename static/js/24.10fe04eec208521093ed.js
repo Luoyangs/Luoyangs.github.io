@@ -1,0 +1,2 @@
+webpackJsonp([24],{GFHM:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s={render:function(){this.$createElement;this._self._c;return this._m(0)},staticRenderFns:[function(){var t=this.$createElement,e=this._self._c||t;return e("section",[e("h1",[this._v("安装 Install")]),this._v(" "),e("p",[this._v("this is install")])])}]},i=n("VU/8")(null,s,!1,null,null,null);e.default=i.exports},"yV/M":function(t,e,n){t.exports=n("GFHM")}});
+//# sourceMappingURL=24.10fe04eec208521093ed.js.map

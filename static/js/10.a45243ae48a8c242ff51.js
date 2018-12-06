@@ -1,2 +1,0 @@
-webpackJsonp([10],{nDcQ:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r={render:function(){this.$createElement;this._self._c;return this._m(0)},staticRenderFns:[function(){var e=this.$createElement,t=this._self._c||e;return t("section",[t("h1",[this._v("滚动图 Swiper")])])}]},s=n("VU/8")(null,r,!1,null,null,null);t.default=s.exports},"un+P":function(e,t,n){e.exports=n("nDcQ")}});
-//# sourceMappingURL=10.a45243ae48a8c242ff51.js.map

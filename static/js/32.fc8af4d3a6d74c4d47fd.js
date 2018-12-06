@@ -1,0 +1,2 @@
+webpackJsonp([32],{Ck8j:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r={render:function(){this.$createElement;this._self._c;return this._m(0)},staticRenderFns:[function(){var e=this.$createElement,t=this._self._c||e;return t("section",[t("h1",[this._v("拖拽组件 Drag")])])}]},s=n("VU/8")(null,r,!1,null,null,null);t.default=s.exports},nQlL:function(e,t,n){e.exports=n("Ck8j")}});
+//# sourceMappingURL=32.fc8af4d3a6d74c4d47fd.js.map
