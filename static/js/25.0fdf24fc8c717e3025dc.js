@@ -1,0 +1,2 @@
+webpackJsonp([25],{"9Mfv":function(e,t,n){e.exports=n("IFg8")},IFg8:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var s={render:function(){this.$createElement;this._self._c;return this._m(0)},staticRenderFns:[function(){var e=this.$createElement,t=this._self._c||e;return t("section",[t("h1",[this._v("表单校验 validate")])])}]},l=n("VU/8")(null,s,!1,null,null,null);t.default=l.exports}});
+//# sourceMappingURL=25.0fdf24fc8c717e3025dc.js.map
