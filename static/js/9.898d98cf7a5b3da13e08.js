@@ -1,2 +1,0 @@
-webpackJsonp([9],{JbyR:function(e,t,n){e.exports=n("hPPl")},hPPl:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var l={render:function(){this.$createElement;this._self._c;return this._m(0)},staticRenderFns:[function(){var e=this.$createElement,t=this._self._c||e;return t("section",[t("h1",[this._v("表格 Table")])])}]},s=n("VU/8")(null,l,!1,null,null,null);t.default=s.exports}});
-//# sourceMappingURL=9.898d98cf7a5b3da13e08.js.map
