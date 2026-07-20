@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 工具箱 - 隐私政策</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --text: #0f172a;
+        --muted: #475569;
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --line: #e2e8f0;
+      }
+      body {
+        margin: 0;
+        font-family:
+          'PingFang SC',
+          'Noto Sans SC',
+          system-ui,
+          -apple-system,
+          sans-serif;
+        line-height: 1.7;
+        color: var(--text);
+        background: var(--bg);
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 48px 20px 80px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 32px 28px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 14px;
+        margin-bottom: 28px;
+      }
+      h2 {
+        margin-top: 28px;
+        font-size: 18px;
+      }
+      ul {
+        padding-left: 1.2em;
+      }
+      a {
+        color: #2563eb;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article class="card">
+        <h1>AI 工具箱隐私政策</h1>
+        <p class="meta">适用于 Chrome 扩展「AI 工具箱」· 最近更新：2026-07-20</p>
+
+        <p>
+          本政策说明「AI 工具箱」（下称「本扩展」）如何处理与你相关的信息。使用本扩展即表示你已阅读并理解本政策。
+        </p>
+
+        <h2>1. 我们是谁</h2>
+        <p>
+          本扩展由开发者在 Chrome Web Store 发布，用于提供侧边栏 AI 助手与前端开发/设计辅助工具。如需联系，请通过商店商品页的支持邮箱或开发者提供的联系方式。
+        </p>
+
+        <h2>2. 我们收集 / 处理哪些信息</h2>
+        <ul>
+          <li>
+            <strong>你主动填写的配置</strong>：例如大模型 API Key、模型偏好、面板位置等，保存在浏览器本地（Chrome
+            Storage）。
+          </li>
+          <li>
+            <strong>对话与工具输入</strong>：你在聊天、翻译、OCR、总结等功能中输入或选中的文本/图片，会按你的操作发送到你配置的 AI
+            服务商接口。
+          </li>
+          <li>
+            <strong>页面相关数据（按需）</strong>：当你使用页面总结、截图、尺子、取色、Mock/CORS
+            等功能时，本扩展可能读取当前标签页的必要信息或在页面中注入脚本，以实现对应功能。
+          </li>
+          <li>
+            <strong>调试规则数据</strong>：Mock、ModHeader、CORS、代理情景等规则保存在本地，用于在浏览器中生效。
+          </li>
+        </ul>
+
+        <h2>3. 信息如何使用与传输</h2>
+        <ul>
+          <li>API Key、聊天内容、翻译文本、OCR 图片等，仅用于完成你发起的 AI 请求。</li>
+          <li>
+            可能调用的远程服务包括但不限于：智谱
+            <code>open.bigmodel.cn</code>，以及你在设置中启用的其他模型提供方（例如兼容 OpenAI 协议的中转、Gemini
+            等）。具体以你的配置为准。
+          </li>
+          <li>我们不会把你的数据出售给第三方广告商。</li>
+          <li>本扩展开发者不运营独立的用户账号系统；数据默认留在你的浏览器本地，除非你主动触发需联网的 AI 功能。</li>
+        </ul>
+
+        <h2>4. 本地存储</h2>
+        <p>
+          配置、规则、部分缓存与历史相关数据使用 <code>chrome.storage</code> / IndexedDB
+          等浏览器本地能力保存。卸载扩展后，相关本地数据通常会一并清除（取决于浏览器行为）。
+        </p>
+
+        <h2>5. 敏感能力说明</h2>
+        <ul>
+          <li><strong>网页访问</strong>：用于内容脚本与开发调试工具在你打开的网站上工作。</li>
+          <li><strong>网络请求修改</strong>：Mock / CORS / 请求头工具通过 declarativeNetRequest 等能力生效。</li>
+          <li><strong>代理设置</strong>：仅在你使用「代理切换」并主动应用情景时修改；请在测试后恢复直连。</li>
+        </ul>
+
+        <h2>6. 数据安全</h2>
+        <p>
+          请妥善保管你的 API Key，不要分享给他人。我们建议仅在可信网络环境下使用代理与请求拦截类功能。
+        </p>
+
+        <h2>7. 儿童隐私</h2>
+        <p>本扩展不以儿童为服务对象，不故意收集儿童的个人信息。</p>
+
+        <h2>8. 政策变更</h2>
+        <p>我们可能更新本政策；更新后会在本页面调整「最近更新」日期。继续使用视为知悉变更。</p>
+
+        <h2>9. 联系我们</h2>
+        <p>
+          如对隐私问题有疑问，请通过 Chrome Web Store 商品页的支持渠道联系开发者，并注明「AI 工具箱隐私咨询」。
+        </p>
+
+        <hr style="border: none; border-top: 1px solid var(--line); margin: 32px 0" />
+
+        <h2>Privacy Policy (English Summary)</h2>
+        <p>
+          AI Toolbox stores your settings and API keys locally in the browser. Content you submit for chat,
+          translation, OCR, or summarization is sent only to the AI providers you configure. Debugging tools
+          (mock, CORS, headers, proxy) may access page/network settings to perform user-initiated actions. We
+          do not sell your data. Contact the developer via the Chrome Web Store listing support channel.
+        </p>
+      </article>
+    </main>
+  </body>
+</html>
